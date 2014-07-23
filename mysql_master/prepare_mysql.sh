@@ -24,8 +24,6 @@ mysqld_status () {
     fi
 }
 
-echo "====== create mysql_dir and create mysql users ======"
-
 echo "==== install mysql db files ===="
 mysql_install_db
 

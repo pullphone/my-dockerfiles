@@ -1,5 +1,5 @@
 #!/bin/sh
-MYSQL_DIR_NAME="/usr/local/var/lib/mysql/master"
+MYSQL_DIR_NAME="/mnt/shared/mysql/master"
 docker stop mysql-master
 docker rm mysql-master
 docker run -v $MYSQL_DIR_NAME:/var/lib/mysql -d -p 3306 --name mysql-master pull/mysql-master
