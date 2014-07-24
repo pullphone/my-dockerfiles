@@ -1,9 +1,7 @@
-#!/bin/sh
-MYSQL_DIR_NAME="/mnt/shared/mysql/master"
+#!/bin/bash
+source ./docker_setting.sh
+
 docker stop mysql-master
 docker rm mysql-master
-docker run -v $MYSQL_DIR_NAME:/var/lib/mysql -d -p 3306 --name mysql-master pull/mysql-master
+docker run -v $DOCKER_MYSQL_DIR:/var/lib/mysql -d -p $DOCKER_MYSQL_PORT --name mysql-master pull/mysql-master
 
-HOST_PORT=`docker port mysql-master 3306`
-PORT=`echo "$HOST_PORT"| cut -d':' -f2`
-echo $PORT > $MYSQL_DIR_NAME/mysql_port.txt

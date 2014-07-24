@@ -30,7 +30,7 @@ mysql_install_db
 echo "==== run mysqld_safe ===="
 mysqld_safe > /dev/null 2>&1 &
 
-MYSQLD_STARTUP_TIMEOUT=10
+MYSQLD_STARTUP_TIMEOUT=20
 for i in `seq 1 "${MYSQLD_STARTUP_TIMEOUT}"`; do
     sleep 1
 
