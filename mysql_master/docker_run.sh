@@ -1,7 +1,7 @@
 #!/bin/bash
 source ./docker_setting.sh
 
-docker stop mysql-master
-docker rm mysql-master
-docker run -v $DOCKER_MYSQL_DIR:/var/lib/mysql -d -p $DOCKER_MYSQL_PORT --name mysql-master pull/mysql-master
+$DOCKER_BIN_NAME stop $DOCKER_CONTAINER_NAME
+$DOCKER_BIN_NAME rm $DOCKER_CONTAINER_NAME
+$DOCKER_BIN_NAME run -v $DOCKER_MYSQL_DIR:/var/lib/mysql -d --net=host --name $DOCKER_CONTAINER_NAME $DOCKER_IMAGE_NAME
 

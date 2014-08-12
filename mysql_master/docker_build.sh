@@ -16,7 +16,7 @@ then
     fi
 fi
 
-docker build -t="pull/mysql-master" .
+$DOCKER_BIN_NAME build -t=$DOCKER_IMAGE_NAME .
 
 if [ ! -d $DOCKER_MYSQL_DIR ];
 then
@@ -26,11 +26,11 @@ fi
 
 if [ "$PREPARE_MYSQL" != "no" ];
 then
-    docker stop mysql-master
-    docker rm mysql-master
+    $DOCKER_BIN_NAME stop $DOCKER_CONTAINER_NAME
+    $DOCKER_BIN_NAME rm $DOCKER_CONTAINER_NAME
 
-    docker run -v $DOCKER_MYSQL_DIR:/var/lib/mysql --name mysql-master -t -i pull/mysql-master /root/prepare_mysql.sh
+    $DOCKER_BIN_NAME run -v $DOCKER_MYSQL_DIR:/var/lib/mysql --name $DOCKER_CONTAINER_NAME -t -i $DOCKER_IMAGE_NAME /root/prepare_mysql.sh
 
-    docker stop mysql-master
-    docker rm mysql-master
+    $DOCKER_BIN_NAME stop $DOCKER_CONTAINER_NAME
+    $DOCKER_BIN_NAME rm $DOCKER_CONTAINER_NAME
 fi

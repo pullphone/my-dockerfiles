@@ -1,3 +1,5 @@
 #!/bin/bash
-DOCKER_MYSQL_DIR="/mnt/shared/mysql/master"
-DOCKER_MYSQL_PORT="0.0.0.0:3306:3306"
+DOCKER_BIN_NAME="docker.io"
+DOCKER_MYSQL_DIR="/home/mysql/master"
+DOCKER_IMAGE_NAME="pull/mysql-master"
+DOCKER_CONTAINER_NAME="mysql-master"

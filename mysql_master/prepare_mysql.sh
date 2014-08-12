@@ -52,6 +52,7 @@ fi
 
 echo "==== launch mysql ===="
 echo "==== change root user and add repl user ===="
+echo "use mysql; TRUNCATE TABLE user;" | mysql -hlocalhost -uroot
 echo "GRANT ALL PRIVILEGES ON *.* TO root@'%' IDENTIFIED BY 'root';"    | mysql -hlocalhost -uroot
 echo "GRANT REPLICATION SLAVE ON *.* TO repl@'%' IDENTIFIED BY 'repl';" | mysql -hlocalhost -uroot
 
