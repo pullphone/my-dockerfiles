@@ -1,4 +1,3 @@
-#!/bin/bash
 DOCKER_BIN_NAME="docker.io"
 DOCKER_MYSQL_DIR="/home/mysql/master"
 DOCKER_IMAGE_NAME="pull/mysql-master"
