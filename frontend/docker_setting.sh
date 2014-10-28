@@ -1,4 +1,5 @@
-DOCKER_BIN_NAME="docker.io"
+DOCKER_BIN_NAME="docker"
 DOCKER_IMAGE_NAME="pull/frontend"
 DOCKER_CONTAINER_NAME="frontend"
 DOCKER_WWW_DIR="/home/www/experiment.pull-phone.com"
+DOCKER_NGINX_LOG_DIR="/home/www/nginx_logs"

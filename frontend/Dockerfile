@@ -33,7 +33,6 @@ RUN cp -ai /root/build/nginx-1.6.0/conf /etc/nginx
 ADD nginx_conf/nginx.conf /etc/nginx/
 RUN mkdir /etc/nginx/conf.d
 ADD nginx_conf/localdev.conf /etc/nginx/conf.d/
-RUN mkdir /var/log/nginx
 
 # add PHP-FPM config
 ADD php-fpm_conf/www.conf /etc/php5/fpm/pool.d/www.conf
@@ -43,4 +42,17 @@ RUN sed -i -e 's/;daemonize = yes/daemonize = no/g' /etc/php5/fpm/php-fpm.conf
 ADD supervisord_conf/nginx.conf /etc/supervisor/conf.d/
 ADD supervisord_conf/php-fpm.conf /etc/supervisor/conf.d/
 
+# change timezone
+RUN echo "Asia/Tokyo" > /etc/timezone
+RUN dpkg-reconfigure -f noninteractive tzdata
+RUN sed -i -e 's/;date.timezone =/date.timezone = Asia\/Tokyo/g' /etc/php5/fpm/php.ini
+RUN sed -i -e 's/;date.timezone =/date.timezone = Asia\/Tokyo/g' /etc/php5/cli/php.ini
+RUN php -r "echo date('Y-m-d H:i:s');"
+
+RUN apt-get install -y wget unzip
+RUN wget --no-check-certificate https://github.com/twilio/twilio-php/zipball/master
+RUN mv master twilio-php.zip
+RUN unzip twilio-php.zip
+
+#CMD ["/bin/bash"]
 CMD ["/usr/bin/supervisord", "-n"]
