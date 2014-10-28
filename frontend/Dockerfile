@@ -49,10 +49,5 @@ RUN sed -i -e 's/;date.timezone =/date.timezone = Asia\/Tokyo/g' /etc/php5/fpm/p
 RUN sed -i -e 's/;date.timezone =/date.timezone = Asia\/Tokyo/g' /etc/php5/cli/php.ini
 RUN php -r "echo date('Y-m-d H:i:s');"
 
-RUN apt-get install -y wget unzip
-RUN wget --no-check-certificate https://github.com/twilio/twilio-php/zipball/master
-RUN mv master twilio-php.zip
-RUN unzip twilio-php.zip
-
 #CMD ["/bin/bash"]
 CMD ["/usr/bin/supervisord", "-n"]
