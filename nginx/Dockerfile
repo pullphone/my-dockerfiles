@@ -20,7 +20,8 @@ RUN make install
 RUN cp -ai /root/build/nginx-1.6.0/conf /etc/nginx
 ADD nginx_conf/nginx.conf /etc/nginx/
 RUN mkdir /etc/nginx/conf.d
-ADD nginx_conf/localdev.conf /etc/nginx/conf.d/
+ADD nginx_conf/php-fpm.conf /etc/nginx/conf.d/
+ADD nginx_conf/unicorn.conf /etc/nginx/conf.d/
 
 #CMD ["/bin/bash"]
 CMD ["/usr/local/nginx/sbin/nginx", "-c", "/etc/nginx/nginx.conf"]
