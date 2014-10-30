@@ -23,3 +23,10 @@ RUN echo 'gem: --no-rdoc --no-ri' >> /.gemrc
 RUN apt-get install -y libmysqld-dev
 
 RUN bash -l -c 'gem install bundler'
+
+RUN apt-get install -y supervisor
+
+ADD exec_unicorn.sh /root/
+ADD supervisord_unicorn.conf /etc/supervisor/conf.d/
+
+CMD ["/usr/bin/supervisord", "-n"]
