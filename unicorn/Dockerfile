@@ -22,6 +22,8 @@ RUN echo 'gem: --no-rdoc --no-ri' >> /.gemrc
 # for rubygem mysql2
 RUN apt-get install -y libmysqld-dev
 
+RUN bash -l -c 'gem update --system'
+RUN bash -l -c 'gem update'
 RUN bash -l -c 'gem install bundler'
 
 RUN apt-get install -y supervisor
